@@ -1,0 +1,289 @@
+<html>
+	<head>
+		<title>ITM3100 FL19 Javascript Structures - ShoreB</title>
+		<script>
+			function fn_00_Reset()
+			{
+				document.getElementById("p_ConnectMessage").innerHTML = "";
+				document.getElementById("p_Sequence").innerHTML = "";
+				document.getElementById("p_SingleIf").innerHTML = "";
+			}
+			function fn_01_Connect()
+			{
+				document.getElementById("p_ConnectMessage").innerHTML = "Connected";
+			}
+			function fn_02_Sequence()
+			{
+				var strResult;
+				strResult = "Sequence Line 1";
+				strResult += "<br>" + "Sequence Line 2";
+				strResult += "<br>" + "Sequence Line 3";
+				document.getElementById("p_Sequence").innerHTML = strResult;
+			}
+			function fn_03_SingleIf()
+			{
+				var strCompare= "G";
+				var strUsrInput = document.getElementById("txt_InputA").value;
+				var strResult = "";
+
+				strResult = "User value  (" + strUsrInput + ") LT compare value (" + strCompare + ")";
+				if (strUsrInput >= strCompare) strResult = "User value (" + strUsrInput + ") GE compare value (" + strCompare +")";
+				document.getElementById("p_SingleIf").innerHTML = strResult;
+			}
+			function fn_04_DualIf()
+			{
+				var strResult;
+				var usrInputB;
+				var usrInputC;
+				var intSum;
+
+				usrInputB = parseInt(document.getElementById("txt_InputB").value);
+				usrInputC = parseInt(document.getElementById("txt_InputC").value);
+				intSum = usrInputB + usrInputC;
+
+				if (usrInputB > usrInputC)
+				{
+					strResult = "usrInputB(" + usrInputB + ") is greater than usrInputC(" + usrInputC +")";
+				}
+				else
+				{
+					strResult = "usrInputC(" + usrInputB + ") is greater than usrInputB(" + usrInputC +")";
+				}
+				
+				document.getElementById("p_DualIf").innerHTML = strResult;
+			
+			}
+			function fn_05_IfelseIf()
+			{
+				var strResult;
+				var usrInputD;
+				var usrInputE;
+
+				usrInputD = parseInt(document.getElementById("txt_InputD").value);
+				usrInputE = parseInt(document.getElementById("txt_InputE").value);
+
+				if (usrInputD <= 0)
+				{
+					strResult = "usrInputD(" + usrInputD + ") must be greater than zero - please try again";
+				}
+				else if (usrInputE <= 0)
+				{
+					strResult = "usrInputE(" + usrInputE + ") must be greater than zero - please try again";
+				}
+				else if (usrInputD > usrInputE)
+				{
+					strResult = "userInputD(" + usrInputD + ") is greater than userInputE(" + usrInputE + ")";
+				}
+				else
+				{
+					strResult = "userInputD(" + usrInputD + ") is not greather than userInputE("+ usrInputE + ")";
+				}
+				document.getElementById("p_IfelseIf").innerHTML = strResult;
+
+				function fn_06_switchBreak()
+				{
+					var strResult;
+					var strInputF;
+					usrInputF = parseInt(document.getElementById("txt_InputF").value);
+					strResult = "Day of Week " + usrInputF + " is ";
+					
+					switch (usrInputF)
+					{
+						case 1:
+							strResult += "Sunday";
+							break;
+						case 2:
+							strResult += "Monday";
+							break;
+						case 3:
+							strResult += "Tuesday";
+							break;
+						case 4:
+							strResult += "Wednesday";
+							break;
+						case 5:
+							strResult += "Thursday";
+							break;
+						case 6:
+							strResult += "Friday";
+							break;
+						case 7:
+							strResult += "Saturday";
+							break;					
+					}  // end switch
+					document.getElementById("p_switchBreak").innerHTML = strResult;
+				} // end function - fn_06_switchBreak
+
+				function fn_07_switchNoBreak()
+				{
+					var strResult;
+					var intDaysRemaining;
+					strResult = "After Day " + document.getElementById("txt_InputG").value + " there are ";
+
+					intDaysRemaining = 0;
+					switch(parseInt(document.getElementById("txt_InputG").value))
+					{
+						case 1:
+							intDaysRemaining += 0;
+						case 2:
+							intDaysRemaining += 1;
+						case 3:
+							intDaysRemaining += 1;
+						case 4:
+							intDaysRemaining += 1;
+						case 5:
+							intDaysRemaining += 1;
+						case 6:
+							intDaysRemaining += 1;
+						case 7:
+							intDaysRemaining += 1;
+						default:
+							strResult = document.getElementById("txt_IntputG").value + " is not a valid day of week";
+					} // end switch
+					strResult += intDaysRemaining + " days left in the week";
+					document.getElementById("p_switchNoBreak").innerHTML = strResult;
+				} // end fn_07_switchNoBreak
+
+				function fn_08_forRepetition()
+				{
+					// txt_InputH
+					// p_forResult
+					var intBase;
+					var intFactorial;
+					intFactorial = parseInt(document.getElementById("txt_InputH").value);
+					intBase	= intFactorial;
+
+					for (i = 1;i < intBase; i++)
+					{
+						intFactorial = intFactorial * i;
+					}
+					document.getElementById("p_forResult").innerHTML = "The factorial of " + intBase + " is " + intFactorial;
+				}
+				function fn_09_whileRepetition()
+				{
+					var intBase;
+					var intFactorial;
+					var i;
+					intFactorial = parseInt(document.getElementById("txt_InputI").value);
+					intBase = 1;
+
+					i = intFactorial;
+					while (i > 1)
+					{
+						intFactorial = intFactorial * i;
+						i--;	//equivalent to the statement --> i = i - 1
+					}
+					document.getElementById("p_whileResult").innerHTML = "The factorial of " + intBase + " is " + intFactorial;
+
+				}
+				function fn_10_dowhileRepetition()
+				{
+					var intMax;
+					var strResult;
+					var usrInput;
+
+					usrInput = parseInt(document.getElementById("txt_InputJ").value);
+
+					strResult = "Partial Factorial of 10";
+					alert("function works");
+
+					do
+					{
+						intResult = intBase--;
+					} while (intBase > usrInput);
+					strResult += "10! /" + usrInput + "! equals " + intResult;
+					document.getElementById("p_dowhileResult").innerHTML = strResult;
+				}
+			
+			}
+		</script>
+	</head>
+	<body>
+		<table border=1>
+			<tbody>
+				<tr>
+					<td>Example</td>
+					<td>Input</td>
+					<td>Result</td>
+				</tr>
+				<tr>
+					<td>Reset</td>
+					<td><input type="button" onclick="fn_00_Reset()" value="Click to Rest Fields"</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Connect to Javascript</td>
+					<td><input type="button" onclick="fn_01_Connect()" value="Click to Connect"</td>
+					<td><p id="p_ConnectMessage" /></td>
+				</tr>
+				<tr>
+					<td>Sequence</td>
+					<td><input type="button" onclick="fn_01_Sequence()" value="Click to Connect"</td>
+					<td><p id="p_Sequence" /></td>
+				</tr>
+				<tr>
+					<td>Selection</td>
+					<td colspan=2>
+					  <table border=1>
+						<tr>
+							<td><input type="button" onclick="fn_03_SingleIf()" value="Single If"></td>
+							<td><input type="text" size="10" id="txt_InputA" /></td>
+							<td><p id="p_SingleIf" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" onclick="fn_04_DualIf()" value="Dual Selection"></td>
+							<td><input type="text" size="10" id="txt_InputB" /></td>
+							<td><input type="text" size="10" id="txt_InputC" /></td>
+							<td><p id="p_DualIf" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" onclick="fn_05_IfelseIf()" value=" If - elseIf else"></td>
+							<td><input type="text" size="10" id="txt_InputD" /></td>
+							<td><input type="text" size="10" id="txt_InputE" /></td>
+							<td><p id="p_IfelseIf" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" onclick="fn_06_switchBreak()" value=" switch/break"></td>
+							<td colspan=2>Enter Day of Week</br><input type="text" size="10" id="txt_InputF" /></td>
+							<td><p id="p_switchBreak" /></td>
+						</tr>
+						<tr>
+							<td><input type="button" onclick="fn_07_switchNoBreak()" value=" switch/break"></td>
+							<td colspan=2>Enter Day of Week</br><input type="text" size="10" id="txt_InputG" /></td>
+							<td><p id="p_switchNoBreak" /></td>
+						</tr>
+					  </table>
+				   </td>
+				</tr>
+				<tr>
+					<td>Repetition</td>
+					<td><input type="button" onclick="fn_08_forRepetition()" value="for test" ></td>
+					<td><input type="button" onclick="fn_09_whileRepetition()" value="while test" /></td>
+					<td><input type="button" onclick="fn_10_dowhileRepetition()" value="do while test" /></td>
+					<td>
+						<table border=1>
+							<tbody>
+								<tr>
+									<td><input type="text" size="10" id="txt_InputH" ></td>
+									<td><p id="p_forResult" /></td>
+								</tr>
+								<tr>
+									<td><input type="text" size="10" id="txt_InputI" /></td>
+									<td><p id="p_whileResult" /></td>
+								</tr>
+								<tr>
+									<td><input type="text" size="10" id="txt_inputJ" /></td>
+									<td><p id="p_dowhileResult" /></td>
+								</tr>
+							</tbody>
+						</table>
+					</td>
+				</tr>
+			</tbody>
+		</table>	
+	</body>
+</html>
+
+
+
+
